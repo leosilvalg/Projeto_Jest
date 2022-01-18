@@ -84,6 +84,19 @@ const createMenu = (obj) => {
     fetchMenu: () => obj,
     consumption: [],
     order: (string) => objeto.consumption.push(string),
+    pay: () => {
+      let soma = 0;
+      const opcoes = objeto.fetchMenu();
+      const comidas = objeto.consumption;
+      for (let index = 0; index < comidas.length; index += 1) {
+        if (opcoes.food[comidas[index]]) {
+          soma += opcoes.food[comidas[index]];
+        } else if (opcoes.drink[comidas[index]]) {
+          soma += opcoes.drink[comidas[index]];
+        }
+      }
+      return soma + soma * 0.1;
+    },
   };
   return objeto;
 };
